@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+    <link rel="stylesheet" href="/css/home.css">
+</head>
+<body>
+    <div id="container">
+        <h1 id="heading">To Do List</h1>
+
+        <form method="POST">
+            <!-- Inputs in todo app -->
+            <div id="input-container">
+                
+                <!-- task input -->
+                <div id="description" class="inputs">
+                    <label for="desc-inp">DESCRIPTION</label>
+                    <input type="text" name="description" id="desc-inp" placeholder="what do you need to do?">
+                </div>
+
+                <!-- category choosing dropdown -->
+                <span class="inputs">
+                    <label for="category">CATEGORY</label>
+                    <select name="category" id="category">
+                        <option value="">Select a category</option>
+                        <option value="personal">Personal</option>
+                        <option value="work">Work</option>
+                        <option value="school">School</option>
+                        <option value="others">Others</option>
+                    </select>
+                </span>
+
+                <!-- due dates input -->
+                <span class="inputs">
+                    <label for="dates">DUE DATE</label>
+                    <input type="date" name="date" id="dates">
+                </span>
+            </div>
+
+            <!-- add and delete buttons -->
+            <div id="btns">
+                <button type="submit" formaction="/create-task" id="add-btn">ADD TASK</button>
+                <button type="submit" formaction="/delete-task" form="delete-form" id="del-btn">DELETE TASK</button>
+            </div>
+        </form>
+
+        <!-- task list -->
+        <div id="tasks">
+            <ul>
+                <form action="GET" id="delete-form">
+                    <% for (let i of task) { %>
+                        <li id="task">
+                            <input type="checkbox" name="<%= i._id %>">
+                            <label for=""> <%= i.description %> </label>
+                            <p> <%= i.date %> </p>
+                            <div id="task-tag"> <%= i.category %> </div>
+                        </li>
+                    <% } %>
+                </form>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

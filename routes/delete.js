@@ -8,7 +8,7 @@ const router = express.Router();
 const deleteController = require('../controllers/delete_controller');
 
 //getting delete task route from controller
-router.get('/', deleteController.delete);
+router.post('/:id', deleteController.delete);
 
 // exporting router
 module.exports = router;

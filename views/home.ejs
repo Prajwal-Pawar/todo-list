@@ -58,7 +58,11 @@
 
       <hr />
 
-      <h3 class="text-center mb-3 mt-3">Tasks</h3>
+      <% if(task == 0){ %>
+      <h3 class="text-center mb-3 mt-3">All tasks are completed</h3>
+      <% }else{ %>
+      <h3 class="text-center mb-3 mt-3"><%= task.length %> Tasks Remaining</h3>
+      <% } %>
 
       <!-- task list -->
       <form method="POST">
